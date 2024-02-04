@@ -1,0 +1,19 @@
+---
+- name: Configure Site-to-Site VPN
+  hosts: palo_alto_firewall
+  gather_facts: false
+  tasks:
+    - name: Template VPN configuration
+      template:
+        src: templates/vpn_config_template.xml.j2
+        dest: /path/to/ansible/playbook/output/vpn_config.xml
+      vars:
+        peerIP: "{{ peerIP }}"
+        preSharedKey: "{{ preSharedKey }}"
+        localSubnet: "{{ localSubnet }}"
+        remoteSubnet: "{{ remoteSubnet }}"
+        ikeVersion: "{{ ikeVersion }}"
+
+    - name: Push configuration to Palo Alto firewall
+      command: "scp /path/to/ansible/playbook/output/vpn_config.xml admin@{{ palo_alto_mgmt_ip }}:/config.xml"
+      delegate_to: localhost
