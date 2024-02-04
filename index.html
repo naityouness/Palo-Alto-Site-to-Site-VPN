@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Site-to-Site VPN Configuration</title>
+</head>
+<body>
+    <h2>Site-to-Site VPN Configuration</h2>
+    <form id="vpnForm" onsubmit="submitForm(event)">
+        <label for="peerIP">Peer IP:</label>
+        <input type="text" id="peerIP" name="peerIP" required><br>
+
+        <label for="preSharedKey">Pre-shared Key:</label>
+        <input type="text" id="preSharedKey" name="preSharedKey" required><br>
+
+        <label for="localSubnet">Local Subnet:</label>
+        <input type="text" id="localSubnet" name="localSubnet" placeholder="e.g., 192.168.1.0/24" required><br>
+
+        <label for="remoteSubnet">Remote Subnet:</label>
+        <input type="text" id="remoteSubnet" name="remoteSubnet" placeholder="e.g., 10.0.0.0/24" required><br>
+
+        <label for="ikeVersion">IKE Version:</label>
+        <select id="ikeVersion" name="ikeVersion" required>
+            <option value="v1">IKEv1</option>
+            <option value="v2">IKEv2</option>
+        </select><br>
+
+        <!-- Add more input fields as needed -->
+
+        <input type="submit" value="Generate Ansible Variable File">
+    </form>
+
+    <script>
+        function submitForm(event) {
+            event.preventDefault();
+            const formData = new FormData(document.getElementById('vpnForm'));
+            const variableObject = Object.fromEntries(formData);
+
+            // Convert the object to YAML format
+            const yamlString = jsyaml.dump(variableObject);
+
+            // Create a Blob containing the YAML string
+            const blob = new Blob([yamlString], { type: 'text/yaml' });
+
+            // Create a download link for the YAML file
+            const link = document.createElement('a');
+            link.href = window.URL.createObjectURL(blob);
+            link.download = 'vpn_config_variables.yml';
+            document.body.appendChild(link);
+
+            // Trigger a click on the link to start the download
+            link.click();
+
+            // Remove the link from the DOM
+            document.body.removeChild(link);
+        }
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js"></script>
+</body>
+</html>
