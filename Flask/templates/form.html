@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Site-to-Site VPN</title>
+</head>
+<body>
+    <h1>Create Site-to-Site VPN</h1>
+    <form action="/" method="POST">
+        <label for="firewall_ip">Firewall IP:</label>
+        <input type="text" id="firewall_ip" name="firewall_ip"><br><br>
+
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username"><br><br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password"><br><br>
+
+        <label for="pre_shared_key">Pre-Shared Key:</label>
+        <input type="text" id="pre_shared_key" name="pre_shared_key"><br><br>
+
+        <label for="vpn_zone">VPN Zone:</label>
+        <input type="text" id="vpn_zone" name="vpn_zone"><br><br>
+
+        <label for="vpn_destination">VPN Destination:</label>
+        <input type="text" id="vpn_destination" name="vpn_destination"><br><br>
+
+        <label for="ike_profile_name">IKE Profile Name:</label>
+        <input type="text" id="ike_profile_name" name="ike_profile_name"><br><br>
+
+        <label for="ike_hash">IKE Hash:</label>
+        <input type="text" id="ike_hash" name="ike_hash"><br><br>
+
+        <label for="ike_dh_group">IKE DH Group:</label>
+        <input type="text" id="ike_dh_group" name="ike_dh_group"><br><br>
+
+        <label for="ike_encryption">IKE Encryption:</label>
+        <input type="text" id="ike_encryption" name="ike_encryption"><br><br>
+
+        <label for="ike_lifetime_seconds">IKE Lifetime (Seconds):</label>
+        <input type="text" id="ike_lifetime_seconds" name="ike_lifetime_seconds"><br><br>
+
+        <label for="ipsec_profile_name">IPSec Profile Name:</label>
+        <input type="text" id="ipsec_profile_name" name="ipsec_profile_name"><br><br>
+
+        <label for="ipsec_esp_authentication">IPSec ESP Authentication:</label>
+        <input type="text" id="ipsec_esp_authentication" name="ipsec_esp_authentication"><br><br>
+
+        <label for="ipsec_esp_encryption">IPSec ESP Encryption:</label>
+        <input type="text" id="ipsec_esp_encryption" name="ipsec_esp_encryption"><br><br>
+
+        <label for="ipsec_lifetime_seconds">IPSec Lifetime (Seconds):</label>
+        <input type="text" id="ipsec_lifetime_seconds" name="ipsec_lifetime_seconds"><br><br>
+
+        <label for="ipsec_dh_group">IPSec DH Group:</label>
+        <input type="text" id="ipsec_dh_group" name="ipsec_dh_group"><br><br>
+
+        <label for="local_address_interface">Local Address Interface:</label>
+        <input type="text" id="local_address_interface" name="local_address_interface"><br><br>
+
+        <label for="local_ip">Local IP:</label>
+        <input type="text" id="local_ip" name="local_ip"><br><br>
+
+        <label for="peer_ip">Peer IP:</label>
+        <input type="text" id="peer_ip" name="peer_ip"><br><br>
+
+        <label for="firewall_rule_inbound">Firewall Rule Inbound:</label>
+        <input type="text" id="firewall_rule_inbound" name="firewall_rule_inbound"><br><br>
+
+        <label for="firewall_rule_inbound_source">Firewall Rule Inbound Source:</label>
+        <input type="text" id="firewall_rule_inbound_source" name="firewall_rule_inbound_source"><br><br>
+
+        <label for="firewall_rule_inbound_destination">Firewall Rule Inbound Destination:</label>
+        <input type="text" id="firewall_rule_inbound_destination" name="firewall_rule_inbound_destination"><br><br>
+
+        <label for="firewall_rule_outbound">Firewall Rule Outbound:</label>
+        <input type="text" id="firewall_rule_outbound" name="firewall_rule_outbound"><br><br>
+
+        <label for="firewall_rule_outbound_source">Firewall Rule Outbound Source:</label>
+        <input type="text" id="firewall_rule_outbound_source" name="firewall_rule_outbound_source"><br><br>
+
+        <label for="firewall_rule_outbound_destination">Firewall Rule Outbound Destination:</label>
+        <input type="text" id="firewall_rule_outbound_destination" name="firewall_rule_outbound_destination"><br><br>
+
+        <label for="ipsec_tunnel_name">IPSec Tunnel Name:</label>
+        <input type="text" id="ipsec_tunnel_name" name="ipsec_tunnel_name"><br><br>
+
+        <label for="proxy_id_local">Proxy ID Local:</label>
+        <input type="text" id="proxy_id_local" name="proxy_id_local"><br><br>
+
+        <label for="proxy_id_remote">Proxy ID Remote:</label>
+        <input type="text" id="proxy_id_remote" name="proxy_id_remote"><br><br>
+
+        <label for="proxy_id_protocol">Proxy ID Protocol:</label>
+        <input type="text" id="proxy_id_protocol" name="proxy_id_protocol"><br><br>
+
+        <label for="tunnel_monitor">Tunnel Monitor:</label>
+        <input type="text" id="tunnel_monitor" name="tunnel_monitor"><br><br>
+
+        <label for="tunnel_disabled">Tunnel Disabled:</label>
+        <input type="text" id="tunnel_disabled" name="tunnel_disabled"><br><br>
+
+        <label for="ike_gateway_name">IKE Gateway Name:</label>
+        <input type="text" id="ike_gateway_name" name="ike_gateway_name"><br><br>
+
+        <label for="tunnel_interface">Tunnel Interface:</label>
+        <input type="text" id="tunnel_interface" name="tunnel_interface"><br><br>
+
+        <input type="submit" value="Create Site-to-Site VPN">
+    </form>
+</body>
+</html>
