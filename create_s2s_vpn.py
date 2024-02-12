@@ -10,9 +10,9 @@ def execute_ssh_command(ssh_client, command):
 
 def main():
     try:
-        print("Loading variables from palo2.yml...")
-        # Load variables from palo2.yml
-        with open("palo2.yml", "r") as file:
+        print("Loading variables from vars.yml...")
+        # Load variables from vars.yml
+        with open("vars.yml", "r") as file:
             vars_data = yaml.safe_load(file)
         print("Variables loaded successfully!")
 
@@ -118,15 +118,23 @@ def main():
         print("Command output:", output)
 
         # Create the IPSec Tunnel
-        command = f"set network tunnel ipsec {vars_data['ipsec_tunnel_name']} auto-key ike-gateway {vars_data['ike_gateway_name']}\n"
-        command += f"set network tunnel ipsec {vars_data['ipsec_tunnel_name']} auto-key proxy-id subnets local {vars_data['proxy_id_local']} remote {vars_data['proxy_id_remote']} protocol {vars_data['proxy_id_protocol']}\n"
-        command += f"set network tunnel ipsec {vars_data['ipsec_tunnel_name']} auto-key ipsec-crypto-profile {vars_data['ipsec_profile_name']}\n"
-        command += f"set network tunnel ipsec {vars_data['ipsec_tunnel_name']} tunnel-interface {vars_data['tunnel_interface']}\n"
-        command += f"set network tunnel ipsec {vars_data['ipsec_tunnel_name']} tunnel-monitor enable {vars_data['tunnel_monitor']}\n"
-        command += f"set network tunnel ipsec {vars_data['ipsec_tunnel_name']} disabled {vars_data['tunnel_disabled']}"
-        print("Executing command:", command)
-        output = execute_ssh_command(shell, command)
-        print("Command output:", output)
+        
+        # Create the IPSec Tunnel
+        commands = [
+            f"set network tunnel ipsec {vars_data['ipsec_tunnel_name']} tunnel-interface {vars_data['tunnel_interface']}",
+            f"set network tunnel ipsec {vars_data['ipsec_tunnel_name']} auto-key ike-gateway {vars_data['ike_gateway_name']}",
+            f"set network tunnel ipsec {vars_data['ipsec_tunnel_name']} auto-key proxy-id subnets local {vars_data['proxy_id_local']} remote {vars_data['proxy_id_remote']} protocol {vars_data['proxy_id_protocol']}",
+            f"set network tunnel ipsec {vars_data['ipsec_tunnel_name']} auto-key ipsec-crypto-profile {vars_data['ipsec_profile_name']}",
+            f"set network tunnel ipsec {vars_data['ipsec_tunnel_name']} tunnel-monitor enable {vars_data['tunnel_monitor']}",
+            f"set network tunnel ipsec {vars_data['ipsec_tunnel_name']} disabled {vars_data['tunnel_disabled']}"
+        ]
+        
+        for command in commands:
+            print("Executing command:", command)
+            output = execute_ssh_command(shell, command)
+            print("Command output:", output)
+        
+                
 
 
         print("All tasks completed successfully!")
